@@ -7,7 +7,10 @@ createServer({
   seeds(server) {
     server.create("task", { title: "Inception", description: "2010" });
     server.create("task", { title: "Interstellar", description: "2014" });
-    server.create("task", { title: "Dunkirk", description: "2017" });
+    server.create("task", {
+      title: "Dunkirk",
+      description: "2017",
+    });
   },
   routes() {
     this.namespace = "api";
@@ -25,6 +28,7 @@ createServer({
     this.post("/tasks", (schema, request) => {
       let attrs = JSON.parse(request.requestBody);
 
+      console.debug({ schema });
       return schema.tasks.create(attrs);
     });
 

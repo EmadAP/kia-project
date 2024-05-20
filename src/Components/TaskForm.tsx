@@ -6,8 +6,10 @@ const TaskForm = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [error, setError] = useState(null);
-  const [emptyFields, setEmptyFields] = useState([]);
-  const handleSubmit = async (e) => {
+  const [emptyFields, setEmptyFields] = useState<
+    Array<"title" | "description">
+  >([]);
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const task = { title, description };

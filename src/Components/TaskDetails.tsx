@@ -1,11 +1,16 @@
 import { useTasksContext } from "../Hooks/useTasksContext";
 
 import { formatDistanceToNow } from "date-fns/formatDistanceToNow";
+import { Task } from "../Types/index";
 
-const TaskDetails = ({ task }) => {
+type Props = {
+  task: Task;
+};
+
+const TaskDetails = ({ task }: Props) => {
   const { dispatch } = useTasksContext();
   const handleClick = async () => {
-    const response = await fetch("/api/tasks/" + task._id, {
+    const response = await fetch("/api/tasks/" + task.id, {
       method: "DELETE",
     });
     const json = await response.json();
@@ -22,7 +27,7 @@ const TaskDetails = ({ task }) => {
         <strong>Description : </strong>
         {task.description}
       </p>
-      <p>{formatDistanceToNow(task?.createdAt && new Date(task.createdAt))}</p>
+      <p>{task?.createdAt && formatDistanceToNow(new Date(task.createdAt))}</p>
       <span className="material-symbols-outlined" onClick={handleClick}>
         delete
       </span>

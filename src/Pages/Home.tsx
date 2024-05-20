@@ -11,8 +11,10 @@ const Home = () => {
       const response = await fetch("/api/tasks");
       const json = await response.json();
 
+      console.debug({ json });
+
       if (response.ok) {
-        dispatch({ type: "SET_TASK", payload: json });
+        dispatch({ type: "SET_TASK", payload: json.tasks });
       }
     };
     fetchTasks();
@@ -22,9 +24,12 @@ const Home = () => {
     <div className="home">
       <div className="tasks">
         {tasks?.length &&
-          tasks.map((task) => <TaskDetails key={task._id} task={task} />)}
+          tasks.map((task) => {
+            console.debug("Looping over tasks", task.id, { task });
+            return <TaskDetails key={task.id} task={task} />;
+          })}
       </div>
-      <TaskForm key={tasks._id} />
+      <TaskForm />
     </div>
   );
 };
