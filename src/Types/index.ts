@@ -9,3 +9,13 @@ export type TaskAction = {
   type: "SET_TASK" | "CREATE_TASK" | "DELETE_TASK";
   payload: Task;
 };
+
+export type UserType = {
+  password: string;
+  email: string;
+};
+
+export type AuthAction = {
+  payload: UserType;
+  type: "LOGIN" | "LOGOUT";
+};

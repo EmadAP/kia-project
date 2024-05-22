@@ -5,8 +5,14 @@ createServer({
     task: Model,
   },
   seeds(server) {
-    server.create("task", { title: "Inception", description: "2010" });
-    server.create("task", { title: "Interstellar", description: "2014" });
+    server.create("task", {
+      title: "Inception",
+      description: "2010",
+    });
+    server.create("task", {
+      title: "Interstellar",
+      description: "2014",
+    });
     server.create("task", {
       title: "Dunkirk",
       description: "2017",

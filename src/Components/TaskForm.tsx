@@ -32,7 +32,7 @@ const TaskForm = () => {
       setError(null);
       setEmptyFields([]);
       console.log("new task added", json);
-      dispatch({ type: "CREATE_TASK", payload: json });
+      dispatch({ type: "CREATE_TASK", payload: json.task });
     }
   };
 

@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import { TasksContextProvider } from "./Context/TaskContext";
+import { AuthContextProvider } from "./Context/AuthContext";
 import "./server";
 
 const root = ReactDOM.createRoot(
@@ -10,8 +11,10 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <TasksContextProvider>
-      <App />
-    </TasksContextProvider>
+    <AuthContextProvider>
+      <TasksContextProvider>
+        <App />
+      </TasksContextProvider>
+    </AuthContextProvider>
   </React.StrictMode>
 );

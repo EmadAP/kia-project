@@ -9,6 +9,7 @@ type Props = {
 
 const TaskDetails = ({ task }: Props) => {
   const { dispatch } = useTasksContext();
+
   const handleClick = async () => {
     const response = await fetch("/api/tasks/" + task.id, {
       method: "DELETE",
