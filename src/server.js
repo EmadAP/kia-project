@@ -28,7 +28,7 @@ createServer({
     this.get("/tasks/:id", (schema, request) => {
       let id = request.params.id;
 
-      return schema.tasks.find(id);
+      return schema.tasks.findBy({ id });
     });
 
     this.post("/tasks", (schema, request) => {
@@ -41,7 +41,7 @@ createServer({
     this.patch("/tasks/:id", (schema, request) => {
       let newAttrs = JSON.parse(request.requestBody);
       let id = request.params.id;
-      let task = schema.tasks.find(id);
+      let task = schema.tasks.findBy({ id });
 
       return task.update(newAttrs);
     });
@@ -49,7 +49,7 @@ createServer({
     this.delete("/tasks/:id", (schema, request) => {
       let id = request.params.id;
 
-      return schema.tasks.find(id).destroy();
+      return schema.tasks.findBy({ id }).destroy();
     });
   },
 });

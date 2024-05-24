@@ -1,12 +1,15 @@
 import { createContext, useReducer } from "react";
-import type { UserType, AuthAction } from "../Types/index";
+import type { AuthAction, UserType } from "../Types/index";
 
 export const AuthContext = createContext<{
-  user: Array<UserType>;
+  user: UserType | null;
   dispatch: React.Dispatch<AuthAction>;
-}>({ user: [], dispatch: () => {} });
+}>({ user: null, dispatch: () => {} });
 
-export const authReducer = (state: Array<UserType>, action: AuthAction) => {
+export const authReducer = (
+  state: { user: UserType | null },
+  action: AuthAction
+) => {
   switch (action.type) {
     case "LOGIN":
       return { user: action.payload };

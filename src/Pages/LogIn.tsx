@@ -4,12 +4,12 @@ import { useLogIn } from "../Hooks/useLogIn";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { LogIn, error, isLoading } = useLogIn();
+  const { logIn, error, isLoading } = useLogIn();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    await LogIn(email, password);
+    await logIn(email, password);
   };
 
   return (

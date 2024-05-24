@@ -16,6 +16,6 @@ export type UserType = {
 };
 
 export type AuthAction = {
-  payload: UserType;
+  payload: UserType | null;
   type: "LOGIN" | "LOGOUT";
 };
